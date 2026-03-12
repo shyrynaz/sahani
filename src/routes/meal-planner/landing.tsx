@@ -173,8 +173,8 @@ function MealPlannerLandingPage() {
 	const pricingId = useId();
 
 	return (
-		<div className="min-h-screen bg-white">
-			<nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+		<div className="min-h-screen bg-card">
+			<nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-md border-b border-gray-100">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex items-center justify-between h-16">
 						<Link to="/" className="flex items-center gap-2">
@@ -226,7 +226,7 @@ function MealPlannerLandingPage() {
 				</div>
 
 				{mobileMenuOpen && (
-					<div className="md:hidden bg-white border-t border-gray-100">
+					<div className="md:hidden bg-card border-t border-gray-100">
 						<div className="px-4 py-4 space-y-3">
 							{navLinks.map((link) => (
 								<a
@@ -305,7 +305,7 @@ function MealPlannerLandingPage() {
 						</div>
 						<div className="relative">
 							<div className="relative bg-gradient-to-br from-emerald-50 to-teal-50 rounded-3xl p-8 lg:p-12">
-								<div className="bg-white rounded-2xl shadow-xl p-6 space-y-4">
+								<div className="bg-card rounded-2xl shadow-xl p-6 space-y-4">
 									<div className="flex items-center justify-between mb-4">
 										<div className="flex items-center gap-3">
 											<div className="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center">
@@ -376,7 +376,7 @@ function MealPlannerLandingPage() {
 									</div>
 								</div>
 
-								<div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-lg p-3 flex items-center gap-2">
+								<div className="absolute -top-4 -right-4 bg-card rounded-xl shadow-lg p-3 flex items-center gap-2">
 									<div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
 										<Check className="w-4 h-4 text-green-600" />
 									</div>
@@ -406,7 +406,7 @@ function MealPlannerLandingPage() {
 						{features.map((feature) => (
 							<div
 								key={feature.title}
-								className="bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow"
+								className="bg-card rounded-2xl p-6 hover:shadow-lg transition-shadow"
 							>
 								<div
 									className={`w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center mb-4`}
@@ -474,7 +474,7 @@ function MealPlannerLandingPage() {
 						{testimonials.map((testimonial) => (
 							<div
 								key={testimonial.name}
-								className="bg-white rounded-2xl p-6 shadow-sm"
+								className="bg-card rounded-2xl p-6 shadow-sm"
 							>
 								<div className="flex items-center gap-1 mb-4">
 									{[1, 2, 3, 4, 5].map((star) => (
@@ -522,11 +522,11 @@ function MealPlannerLandingPage() {
 								className={`rounded-2xl p-8 ${
 									plan.popular
 										? "bg-emerald-500 text-white shadow-xl scale-105"
-										: "bg-white border border-gray-200"
+										: "bg-card border border-gray-200"
 								}`}
 							>
 								{plan.popular && (
-									<div className="inline-block bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
+									<div className="inline-block bg-card/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
 										Most Popular
 									</div>
 								)}
@@ -581,7 +581,7 @@ function MealPlannerLandingPage() {
 								<Button
 									className={`w-full rounded-full h-12 ${
 										plan.popular
-											? "bg-white text-emerald-600 hover:bg-gray-100"
+											? "bg-card text-emerald-600 hover:bg-gray-100"
 											: "bg-emerald-500 text-white hover:bg-emerald-600"
 									}`}
 								>
@@ -605,7 +605,7 @@ function MealPlannerLandingPage() {
 					<div className="flex flex-col sm:flex-row gap-4 justify-center">
 						<Button
 							size="lg"
-							className="bg-white text-emerald-600 hover:bg-gray-100 rounded-full px-8 h-14 text-base"
+							className="bg-card text-emerald-600 hover:bg-gray-100 rounded-full px-8 h-14 text-base"
 						>
 							Start Free Trial
 							<ArrowRight className="w-5 h-5 ml-2" />
@@ -613,7 +613,7 @@ function MealPlannerLandingPage() {
 						<Button
 							size="lg"
 							variant="outline"
-							className="bg-transparent border-2 border-white text-white hover:bg-white/10 rounded-full px-8 h-14 text-base"
+							className="bg-transparent border-2 border-white text-white hover:bg-card/10 rounded-full px-8 h-14 text-base"
 						>
 							<Link to="/meal-planner">View Demo</Link>
 						</Button>

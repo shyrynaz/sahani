@@ -85,7 +85,7 @@ function LoginPage() {
 	};
 
 	return (
-		<div className="min-h-screen bg-[#F8F9FA] font-['Manrope',sans-serif]">
+		<div className="min-h-screen bg-secondary font-['Manrope',sans-serif]">
 			<link
 				href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
 				rel="stylesheet"
@@ -95,20 +95,20 @@ function LoginPage() {
 				rel="stylesheet"
 			/>
 
-			<header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-[#E2E8F0] bg-white/80 backdrop-blur-md px-10 py-3">
+			<header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-border bg-card/80 backdrop-blur-md px-10 py-3">
 				<Link to="/" className="flex items-center gap-2">
-					<div className="w-8 h-8 bg-[#13EC5B] rounded-lg flex items-center justify-center">
+					<div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
 						<span className="material-icons text-white text-lg">
 							restaurant_menu
 						</span>
 					</div>
-					<span className="font-bold text-lg text-[#1A1A1A]">sahani</span>
+					<span className="font-bold text-lg text-foreground">sahani</span>
 				</Link>
 				<div className="flex items-center gap-4">
-					<span className="text-sm text-[#4A5568]">Don't have an account?</span>
+					<span className="text-sm text-muted-foreground">Don't have an account?</span>
 					<Link
 						to="/signup"
-						className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#13EC5B]/10 text-[#1A1A1A] text-sm font-bold border border-[#13EC5B]/20 hover:bg-[#13EC5B]/20 transition-colors"
+						className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 text-foreground text-sm font-bold border border-primary/20 hover:bg-primary/20 transition-colors"
 					>
 						Sign Up
 					</Link>
@@ -116,7 +116,7 @@ function LoginPage() {
 			</header>
 
 			<main className="flex h-screen pt-[64px]">
-				<div className="hidden lg:flex w-1/2 relative overflow-hidden bg-[#1A1A1A]">
+				<div className="hidden lg:flex w-1/2 relative overflow-hidden bg-foreground">
 					<div
 						className="absolute inset-0 opacity-60 bg-cover bg-center"
 						style={{
@@ -134,28 +134,28 @@ function LoginPage() {
 						</p>
 						<div className="mt-12 flex gap-4">
 							<div className="flex -space-x-3">
-								<div className="w-10 h-10 rounded-full border-2 border-[#1A1A1A] bg-gray-300 overflow-hidden">
+								<div className="w-10 h-10 rounded-full border-2 border-foreground bg-gray-300 overflow-hidden">
 									<img
 										src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
 										alt="User avatar"
 										className="w-full h-full object-cover"
 									/>
 								</div>
-								<div className="w-10 h-10 rounded-full border-2 border-[#1A1A1A] bg-gray-300 overflow-hidden">
+								<div className="w-10 h-10 rounded-full border-2 border-foreground bg-gray-300 overflow-hidden">
 									<img
 										src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
 										alt="User avatar"
 										className="w-full h-full object-cover"
 									/>
 								</div>
-								<div className="w-10 h-10 rounded-full border-2 border-[#1A1A1A] bg-gray-300 overflow-hidden">
+								<div className="w-10 h-10 rounded-full border-2 border-foreground bg-gray-300 overflow-hidden">
 									<img
 										src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
 										alt="User avatar"
 										className="w-full h-full object-cover"
 									/>
 								</div>
-								<div className="w-10 h-10 rounded-full border-2 border-[#1A1A1A] bg-[#13EC5B] flex items-center justify-center text-[#1A1A1A] text-xs font-bold">
+								<div className="w-10 h-10 rounded-full border-2 border-foreground bg-primary flex items-center justify-center text-foreground text-xs font-bold">
 									+2k
 								</div>
 							</div>
@@ -166,13 +166,13 @@ function LoginPage() {
 					</div>
 				</div>
 
-				<div className="w-full lg:w-1/2 flex flex-col items-center justify-start py-12 px-6 lg:px-20 overflow-y-auto bg-white">
+				<div className="w-full lg:w-1/2 flex flex-col items-center justify-start py-12 px-6 lg:px-20 overflow-y-auto bg-card">
 					<div className="w-full max-w-[480px]">
 						<div className="mb-8">
-							<h2 className="text-[#1A1A1A] tracking-tight text-3xl font-black leading-tight">
+							<h2 className="text-foreground tracking-tight text-3xl font-black leading-tight">
 								Sign in to your account
 							</h2>
-							<p className="text-[#4A5568] mt-2">
+							<p className="text-muted-foreground mt-2">
 								Enter your credentials to access your meal plans.
 							</p>
 						</div>
@@ -189,7 +189,7 @@ function LoginPage() {
 								variant="outline"
 								onClick={handleGoogleLogin}
 								disabled={isLoading}
-								className="h-12 border-[#E2E8F0] hover:bg-[#F8F9FA]"
+								className="h-12 border-border hover:bg-secondary"
 							>
 								<svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
 									<title>Google Logo</title>
@@ -216,7 +216,7 @@ function LoginPage() {
 								type="button"
 								variant="outline"
 								disabled={isLoading}
-								className="h-12 border-[#E2E8F0] hover:bg-[#F8F9FA]"
+								className="h-12 border-border hover:bg-secondary"
 							>
 								<svg
 									className="w-5 h-5 mr-2"
@@ -232,10 +232,10 @@ function LoginPage() {
 
 						<div className="relative mb-8">
 							<div className="absolute inset-0 flex items-center">
-								<div className="w-full border-t border-[#E2E8F0]" />
+								<div className="w-full border-t border-border" />
 							</div>
 							<div className="relative flex justify-center text-xs uppercase">
-								<span className="bg-white px-2 text-[#4A5568]">
+								<span className="bg-card px-2 text-muted-foreground">
 									Or continue with email
 								</span>
 							</div>
@@ -243,7 +243,7 @@ function LoginPage() {
 
 						<form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
 							<div className="space-y-2">
-								<Label htmlFor={emailId} className="text-[#1A1A1A]">
+								<Label htmlFor={emailId} className="text-foreground">
 									Email Address
 								</Label>
 								<Input
@@ -252,7 +252,7 @@ function LoginPage() {
 									placeholder="john@example.com"
 									{...register("email")}
 									aria-invalid={errors.email ? "true" : "false"}
-									className="h-12 border-[#E2E8F0] focus-visible:ring-[#13EC5B]/50"
+									className="h-12 border-border focus-visible:ring-primary/50"
 								/>
 								{errors.email && (
 									<p className="text-sm text-red-600">{errors.email.message}</p>
@@ -260,7 +260,7 @@ function LoginPage() {
 							</div>
 
 							<div className="space-y-2">
-								<Label htmlFor={passwordId} className="text-[#1A1A1A]">
+								<Label htmlFor={passwordId} className="text-foreground">
 									Password
 								</Label>
 								<div className="relative">
@@ -270,14 +270,14 @@ function LoginPage() {
 										placeholder="Enter your password"
 										{...register("password")}
 										aria-invalid={errors.password ? "true" : "false"}
-										className="h-12 pr-12 border-[#E2E8F0] focus-visible:ring-[#13EC5B]/50"
+										className="h-12 pr-12 border-border focus-visible:ring-primary/50"
 									/>
 									<Button
 										type="button"
 										variant="ghost"
 										size="icon"
 										onClick={() => setShowPassword(!showPassword)}
-										className="absolute right-0 top-0 h-12 w-12 text-[#4A5568] hover:text-[#1A1A1A]"
+										className="absolute right-0 top-0 h-12 w-12 text-muted-foreground hover:text-foreground"
 									>
 										{showPassword ? (
 											<EyeOff className="h-5 w-5" />
@@ -301,18 +301,18 @@ function LoginPage() {
 										onCheckedChange={(checked) =>
 											setValue("rememberMe", checked as boolean)
 										}
-										className="border-[#E2E8F0] data-[state=checked]:bg-[#13EC5B] data-[state=checked]:border-[#13EC5B]"
+										className="border-border data-[state=checked]:bg-primary data-[state=checked]:border-primary"
 									/>
 									<Label
 										htmlFor={rememberId}
-										className="text-sm leading-tight text-[#1A1A1A] cursor-pointer"
+										className="text-sm leading-tight text-foreground cursor-pointer"
 									>
 										Remember me
 									</Label>
 								</div>
 								<Link
 									to="/"
-									className="text-sm text-[#13EC5B] font-medium hover:underline"
+									className="text-sm text-primary font-medium hover:underline"
 								>
 									Forgot password?
 								</Link>
@@ -321,7 +321,7 @@ function LoginPage() {
 							<Button
 								type="submit"
 								disabled={isLoading || !isValid}
-								className="w-full h-14 bg-[#13EC5B] text-[#1A1A1A] font-black tracking-[0.015em] hover:bg-[#10B981] shadow-lg shadow-[#13EC5B]/20 disabled:opacity-50 transition-colors"
+								className="w-full h-14 bg-primary text-foreground font-black tracking-[0.015em] hover:bg-sahani-green-hover shadow-lg shadow-primary/20 disabled:opacity-50 transition-colors"
 							>
 								{isLoading ? (
 									<span className="flex items-center gap-2">
@@ -334,18 +334,18 @@ function LoginPage() {
 							</Button>
 						</form>
 
-						<p className="mt-8 text-center text-xs text-[#4A5568]">
+						<p className="mt-8 text-center text-xs text-muted-foreground">
 							By signing in, you agree to our{" "}
 							<Link
 								to="/"
-								className="underline font-bold text-[#1A1A1A] hover:text-[#13EC5B] transition-colors"
+								className="underline font-bold text-foreground hover:text-primary transition-colors"
 							>
 								Terms of Service
 							</Link>{" "}
 							and{" "}
 							<Link
 								to="/"
-								className="underline font-bold text-[#1A1A1A] hover:text-[#13EC5B] transition-colors"
+								className="underline font-bold text-foreground hover:text-primary transition-colors"
 							>
 								Privacy Policy
 							</Link>

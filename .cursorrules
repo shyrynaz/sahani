@@ -98,3 +98,54 @@ Use the latest version of Shadcn to install new components, like this command to
 ```bash
 pnpm dlx shadcn@latest add button
 ```
+
+# Component Story Requirement
+
+**Every `.tsx` component file in `src/components/ui/` and `src/components/sahani/` MUST have a co-located `.stories.tsx` file.**
+
+Components without stories will be rejected in review. Stories must:
+
+- Use the `Meta`/`StoryObj` pattern from `@storybook/react-vite`
+- Include `tags: ['autodocs']` for automatic documentation
+- Export a default `meta` object satisfying `Meta<typeof Component>` with `title`, `component`, `parameters`, and `tags`
+- Export named story constants typed as `StoryObj<typeof meta>`
+- Cover: default state, all variants, edge cases (empty data, loading, error), and interactive states (hover, focus, disabled)
+- For data-driven components: use mock data, not live queries
+
+Example structure:
+```tsx
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { MyComponent } from "./MyComponent";
+
+const meta = {
+  title: "Category/MyComponent",
+  component: MyComponent,
+  parameters: { layout: "centered" },
+  tags: ["autodocs"],
+} satisfies Meta<typeof MyComponent>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = { args: { /* ... */ } };
+export const Variant: Story = { args: { variant: "alt" } };
+```
+
+# Color Token Usage
+
+**Never use hardcoded hex colors.** Always use Tailwind semantic classes:
+- `bg-primary` / `text-primary` for sahani green (#13EC5B)
+- `text-foreground` for dark text (#1A1A1A)
+- `bg-secondary` / `bg-muted` for light gray backgrounds (#F8F9FA)
+- `border-border` for borders (#E2E8F0)
+- `text-muted-foreground` for secondary text (#4A5568)
+- `text-sahani-tertiary` for placeholder/meta text (#A0AEC0)
+- `text-destructive` / `bg-destructive` for errors (#EF4444)
+- `bg-sahani-green-hover` / `text-sahani-green-hover` for green hover (#10B981)
+
+# Component Architecture
+
+- `src/components/ui/` — shadcn primitives (don't modify, install via CLI)
+- `src/components/sahani/` — sahani-branded wrapper components
+- Use `PageLayout` for all authenticated page routes (provides sidebar + main content area)
+- Never use `ml-64` or import the old `Sidebar` component

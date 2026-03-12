@@ -4,7 +4,7 @@ import type { Doc, Id } from "convex/_generated/dataModel";
 import { useMutation, useQuery } from "convex/react";
 import { ShoppingCart } from "lucide-react";
 import { useMemo, useState } from "react";
-import { Sidebar } from "@/components/Sidebar";
+import { PageLayout } from "@/components/sahani/PageLayout";
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
 import { LoadingState } from "@/components/meal-planner/LoadingState";
@@ -150,127 +150,126 @@ function MealPlannerPage() {
 	};
 
 	return (
-		<div className="flex min-h-screen bg-[#F8F9FA]">
-			<Sidebar userName={session.user.name} activePath="/meal-planner" />
-
-			<main className="flex-1 ml-64 mr-80 p-8">
-				<div className="flex items-start justify-between mb-8">
-					<div>
-						<h1 className="text-3xl font-black text-[#1A1A1A] tracking-tight">
-							Weekly Planner
-						</h1>
-						<p className="text-sm text-[#4A5568] mt-1 font-medium">
-							{formatDateRange(weekStart)}
-						</p>
-					</div>
-					<div className="flex items-center gap-4">
-						<div className="flex bg-white rounded-xl p-1 border border-[#E2E8F0] shadow-sm">
-							<Button
-								variant="ghost"
-								size="sm"
-								onClick={() => setViewMode("weekly")}
-								className={`rounded-lg font-bold transition-all ${
-									viewMode === "weekly"
-										? "bg-[#F8F9FA] text-[#1A1A1A]"
-										: "text-[#4A5568] hover:text-[#1A1A1A]"
-								}`}
-							>
-								Weekly
-							</Button>
-							<Button
-								variant="ghost"
-								size="sm"
-								onClick={() => setViewMode("daily")}
-								className={`rounded-lg font-bold transition-all ${
-									viewMode === "daily"
-										? "bg-[#F8F9FA] text-[#1A1A1A]"
-										: "text-[#4A5568] hover:text-[#1A1A1A]"
-								}`}
-							>
-								Daily
-							</Button>
+		<PageLayout userName={session.user.name} className="p-0">
+			<div className="flex min-h-screen">
+				<div className="flex-1 mr-80 p-8">
+					<div className="flex items-start justify-between mb-8">
+						<div>
+							<h1 className="text-3xl font-black text-foreground tracking-tight">
+								Weekly Planner
+							</h1>
+							<p className="text-sm text-muted-foreground mt-1 font-medium">
+								{formatDateRange(weekStart)}
+							</p>
 						</div>
-						<Button
-							onClick={handleGenerateShoppingList}
-							className="bg-[#13EC5B] hover:bg-[#10B981] text-[#1A1A1A] rounded-xl px-6 font-bold shadow-lg shadow-[#13EC5B]/10 transition-all"
-						>
-							<ShoppingCart className="w-4 h-4 mr-2" />
-							Generate Shopping List
-						</Button>
-					</div>
-				</div>
-
-				<div className="flex gap-4 mb-8">
-					<div className="w-24 flex-shrink-0" />{" "}
-					{/* Spacer to align with meal labels */}
-					<div className="flex-1 grid grid-cols-7 gap-4">
-						{days.map((day) => {
-							const isSelected =
-								viewMode === "daily"
-									? selectedDate === day.fullDate
-									: day.fullDate === todayStr;
-							return (
-								<button
-									key={day.id}
-									type="button"
-									onClick={() => {
-										if (viewMode === "daily") setSelectedDate(day.fullDate);
-									}}
-									className={`text-center py-4 rounded-2xl border transition-all cursor-pointer ${
-										isSelected
-											? "bg-[#13EC5B] text-[#1A1A1A] border-[#13EC5B] shadow-lg shadow-[#13EC5B]/20 scale-105 z-10"
-											: "bg-white text-[#4A5568] border-[#E2E8F0] hover:border-[#13EC5B]/50"
+						<div className="flex items-center gap-4">
+							<div className="flex bg-card rounded-xl p-1 border border-border shadow-sm">
+								<Button
+									variant="ghost"
+									size="sm"
+									onClick={() => setViewMode("weekly")}
+									className={`rounded-lg font-bold transition-all ${
+										viewMode === "weekly"
+											? "bg-secondary text-foreground"
+											: "text-muted-foreground hover:text-foreground"
 									}`}
 								>
-									<p
-										className={`text-[10px] font-bold uppercase tracking-widest ${
-											isSelected ? "text-[#1A1A1A]" : "text-[#A0AEC0]"
+									Weekly
+								</Button>
+								<Button
+									variant="ghost"
+									size="sm"
+									onClick={() => setViewMode("daily")}
+									className={`rounded-lg font-bold transition-all ${
+										viewMode === "daily"
+											? "bg-secondary text-foreground"
+											: "text-muted-foreground hover:text-foreground"
+									}`}
+								>
+									Daily
+								</Button>
+							</div>
+							<Button
+								onClick={handleGenerateShoppingList}
+								className="bg-primary hover:bg-sahani-green-hover text-primary-foreground rounded-xl px-6 font-bold shadow-lg shadow-primary/10 transition-all"
+							>
+								<ShoppingCart className="w-4 h-4 mr-2" />
+								Generate Shopping List
+							</Button>
+						</div>
+					</div>
+
+					<div className="flex gap-4 mb-8">
+						<div className="w-24 flex-shrink-0" />
+						<div className="flex-1 grid grid-cols-7 gap-4">
+							{days.map((day) => {
+								const isSelected =
+									viewMode === "daily"
+										? selectedDate === day.fullDate
+										: day.fullDate === todayStr;
+								return (
+									<button
+										key={day.id}
+										type="button"
+										onClick={() => {
+											if (viewMode === "daily") setSelectedDate(day.fullDate);
+										}}
+										className={`text-center py-4 rounded-2xl border transition-all cursor-pointer ${
+											isSelected
+												? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/20 scale-105 z-10"
+												: "bg-card text-muted-foreground border-border hover:border-primary/50"
 										}`}
 									>
-										{day.day}
-									</p>
-									<p className="text-2xl font-black mt-1">{day.date}</p>
-								</button>
-							);
-						})}
+										<p
+											className={`text-[10px] font-bold uppercase tracking-widest ${
+												isSelected ? "text-primary-foreground" : "text-sahani-tertiary"
+											}`}
+										>
+											{day.day}
+										</p>
+										<p className="text-2xl font-black mt-1">{day.date}</p>
+									</button>
+								);
+							})}
+						</div>
 					</div>
+
+					{viewMode === "weekly" ? (
+						<WeeklyView
+							days={days}
+							mealPlanMap={mealPlanMap}
+							recipeMap={recipeMap}
+							selectedSlot={selectedSlot}
+							onSlotClick={handleSlotClick}
+							isLoading={isLoading}
+						/>
+					) : (
+						<DailyView
+							selectedDate={selectedDate}
+							mealPlanMap={mealPlanMap}
+							recipeMap={recipeMap}
+							selectedSlot={selectedSlot}
+							onSlotClick={handleSlotClick}
+							consumed={consumed}
+							targets={targets}
+						/>
+					)}
 				</div>
 
-				{viewMode === "weekly" ? (
-					<WeeklyView
-						days={days}
-						mealPlanMap={mealPlanMap}
-						recipeMap={recipeMap}
-						selectedSlot={selectedSlot}
-						onSlotClick={handleSlotClick}
-						isLoading={isLoading}
-					/>
-				) : (
-					<DailyView
-						selectedDate={selectedDate}
-						mealPlanMap={mealPlanMap}
-						recipeMap={recipeMap}
-						selectedSlot={selectedSlot}
-						onSlotClick={handleSlotClick}
-						consumed={consumed}
-						targets={targets}
-					/>
-				)}
-			</main>
-
-			<PlannerSidebar
-				selectedSlot={selectedSlot}
-				onClearSlot={() => setSelectedSlot(null)}
-				searchQuery={searchQuery}
-				onSearchChange={setSearchQuery}
-				filterTab={filterTab}
-				onFilterTabChange={setFilterTab}
-				recipes={recipes}
-				filteredRecipes={filteredRecipes}
-				onAddRecipe={handleAddRecipe}
-				consumed={consumed}
-				targets={targets}
-			/>
-		</div>
+				<PlannerSidebar
+					selectedSlot={selectedSlot}
+					onClearSlot={() => setSelectedSlot(null)}
+					searchQuery={searchQuery}
+					onSearchChange={setSearchQuery}
+					filterTab={filterTab}
+					onFilterTabChange={setFilterTab}
+					recipes={recipes}
+					filteredRecipes={filteredRecipes}
+					onAddRecipe={handleAddRecipe}
+					consumed={consumed}
+					targets={targets}
+				/>
+			</div>
+		</PageLayout>
 	);
 }

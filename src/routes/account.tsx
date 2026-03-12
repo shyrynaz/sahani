@@ -19,7 +19,7 @@ import {
 	User,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Sidebar } from "@/components/Sidebar";
+import { PageLayout } from "@/components/sahani/PageLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -68,8 +68,8 @@ function AccountPage() {
 
 	if (sessionPending) {
 		return (
-			<div className="flex min-h-screen items-center justify-center bg-[#F8F9FA]">
-				<Loader2 className="w-8 h-8 text-[#13EC5B] animate-spin" />
+			<div className="flex min-h-screen items-center justify-center bg-secondary">
+				<Loader2 className="w-8 h-8 text-primary animate-spin" />
 			</div>
 		);
 	}
@@ -88,14 +88,11 @@ function AccountPage() {
 	];
 
 	return (
-		<div className="flex min-h-screen bg-[#F8F9FA]">
-			<Sidebar userName={session.user.name} activePath="/account" />
-
-			<main className="flex-1 ml-64 p-8">
+		<PageLayout userName={session.user.name}>
 				<div className="max-w-5xl mx-auto">
 					<div className="mb-8">
-						<h1 className="text-3xl font-black text-[#1A1A1A] tracking-tight">Account Settings</h1>
-						<p className="text-[#4A5568] mt-1 font-medium">
+						<h1 className="text-3xl font-black text-foreground tracking-tight">Account Settings</h1>
+						<p className="text-muted-foreground mt-1 font-medium">
 							Manage your profile, dietary goals, and account security.
 						</p>
 					</div>
@@ -109,18 +106,18 @@ function AccountPage() {
 									onClick={() => setActiveTab(tab.id)}
 									className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all ${
 										activeTab === tab.id
-											? "bg-white text-[#13EC5B] shadow-sm border border-[#E2E8F0]"
-											: "text-[#4A5568] hover:bg-white/50"
+											? "bg-card text-primary shadow-sm border border-border"
+											: "text-muted-foreground hover:bg-card/50"
 									}`}
 								>
 									<tab.icon className="w-5 h-5" />
 									{tab.label}
 								</button>
 							))}
-							<div className="mt-8 pt-6 border-t border-[#E2E8F0]">
+							<div className="mt-8 pt-6 border-t border-border">
 								<button
 									onClick={() => authClient.signOut()}
-									className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-[#EF4444] hover:bg-red-50 transition-all w-full text-left"
+									className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-destructive hover:bg-red-50 transition-all w-full text-left"
 								>
 									<LogOut className="w-5 h-5" />
 									Logout from devices
@@ -131,31 +128,31 @@ function AccountPage() {
 						{/* Content Area */}
 						<div className="flex-1">
 							{activeTab === "profile" && (
-								<div className="bg-white rounded-3xl border border-[#E2E8F0] shadow-sm overflow-hidden">
-									<div className="p-8 border-b border-[#E2E8F0] bg-[#F8F9FA]/50">
-										<h2 className="text-xl font-black text-[#1A1A1A]">Profile Information</h2>
-										<p className="text-xs text-[#4A5568] mt-1 font-medium">Update your photo and personal details.</p>
+								<div className="bg-card rounded-3xl border border-border shadow-sm overflow-hidden">
+									<div className="p-8 border-b border-border bg-secondary/50">
+										<h2 className="text-xl font-black text-foreground">Profile Information</h2>
+										<p className="text-xs text-muted-foreground mt-1 font-medium">Update your photo and personal details.</p>
 									</div>
 									<div className="p-8 space-y-8">
 										<div className="flex items-center gap-6">
 											<div className="relative group">
-												<div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-[#13EC5B]/20 to-[#13EC5B]/10 flex items-center justify-center border-2 border-white shadow-md overflow-hidden">
-													<span className="text-3xl font-black text-[#1A1A1A]">
+												<div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center border-2 border-white shadow-md overflow-hidden">
+													<span className="text-3xl font-black text-foreground">
 														{session.user.name?.charAt(0).toUpperCase()}
 													</span>
 												</div>
-												<button className="absolute -bottom-2 -right-2 w-8 h-8 bg-white rounded-xl shadow-lg border border-[#E2E8F0] flex items-center justify-center text-[#13EC5B] hover:bg-[#F8F9FA] transition-all">
+												<button className="absolute -bottom-2 -right-2 w-8 h-8 bg-card rounded-xl shadow-lg border border-border flex items-center justify-center text-primary hover:bg-secondary transition-all">
 													<Camera className="w-4 h-4" />
 												</button>
 											</div>
 											<div>
-												<h3 className="font-bold text-[#1A1A1A]">{session.user.name}</h3>
-												<p className="text-sm text-[#4A5568] font-medium">{session.user.email}</p>
+												<h3 className="font-bold text-foreground">{session.user.name}</h3>
+												<p className="text-sm text-muted-foreground font-medium">{session.user.email}</p>
 												<div className="flex gap-2 mt-3">
-													<Button variant="outline" size="sm" className="h-8 rounded-lg text-xs font-bold border-[#E2E8F0]">
+													<Button variant="outline" size="sm" className="h-8 rounded-lg text-xs font-bold border-border">
 														Change Photo
 													</Button>
-													<Button variant="outline" size="sm" className="h-8 rounded-lg text-xs font-bold text-[#EF4444] border-[#EF4444]/20 hover:bg-red-50">
+													<Button variant="outline" size="sm" className="h-8 rounded-lg text-xs font-bold text-destructive border-destructive/20 hover:bg-red-50">
 														Remove
 													</Button>
 												</div>
@@ -164,40 +161,40 @@ function AccountPage() {
 
 										<div className="grid grid-cols-2 gap-6">
 											<div className="space-y-2">
-												<Label className="text-xs font-black text-[#A0AEC0] uppercase tracking-wider">Full Name</Label>
+												<Label className="text-xs font-black text-sahani-tertiary uppercase tracking-wider">Full Name</Label>
 												<div className="relative">
-													<User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A0AEC0]" />
+													<User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-sahani-tertiary" />
 													<Input 
 														defaultValue={session.user.name || ""} 
-														className="pl-10 h-12 border-[#E2E8F0] rounded-xl focus-visible:ring-[#13EC5B]/50 font-bold"
+														className="pl-10 h-12 border-border rounded-xl focus-visible:ring-primary/50 font-bold"
 													/>
 												</div>
 											</div>
 											<div className="space-y-2">
-												<Label className="text-xs font-black text-[#A0AEC0] uppercase tracking-wider">Email Address</Label>
+												<Label className="text-xs font-black text-sahani-tertiary uppercase tracking-wider">Email Address</Label>
 												<div className="relative">
-													<Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A0AEC0]" />
+													<Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-sahani-tertiary" />
 													<Input 
 														defaultValue={session.user.email} 
 														disabled
-														className="pl-10 h-12 border-[#E2E8F0] rounded-xl bg-[#F8F9FA] font-bold text-[#A0AEC0]"
+														className="pl-10 h-12 border-border rounded-xl bg-secondary font-bold text-sahani-tertiary"
 													/>
 												</div>
 											</div>
 											<div className="space-y-2">
-												<Label className="text-xs font-black text-[#A0AEC0] uppercase tracking-wider">Language</Label>
+												<Label className="text-xs font-black text-sahani-tertiary uppercase tracking-wider">Language</Label>
 												<div className="relative">
-													<Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#A0AEC0]" />
+													<Globe className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-sahani-tertiary" />
 													<Input 
 														defaultValue="English (US)" 
-														className="pl-10 h-12 border-[#E2E8F0] rounded-xl focus-visible:ring-[#13EC5B]/50 font-bold"
+														className="pl-10 h-12 border-border rounded-xl focus-visible:ring-primary/50 font-bold"
 													/>
 												</div>
 											</div>
 										</div>
 
 										<div className="pt-4 flex justify-end">
-											<Button className="bg-[#13EC5B] hover:bg-[#10B981] text-[#1A1A1A] font-black px-8 h-12 rounded-xl shadow-lg shadow-[#13EC5B]/20 transition-all">
+											<Button className="bg-primary hover:bg-sahani-green-hover text-foreground font-black px-8 h-12 rounded-xl shadow-lg shadow-primary/20 transition-all">
 												Save Changes
 											</Button>
 										</div>
@@ -206,47 +203,47 @@ function AccountPage() {
 							)}
 
 							{activeTab === "nutrition" && (
-								<div className="bg-white rounded-3xl border border-[#E2E8F0] shadow-sm overflow-hidden">
-									<div className="p-8 border-b border-[#E2E8F0] bg-[#F8F9FA]/50">
-										<h2 className="text-xl font-black text-[#1A1A1A]">Daily Nutrition Targets</h2>
-										<p className="text-xs text-[#4A5568] mt-1 font-medium">Set your daily macronutrient and calorie goals.</p>
+								<div className="bg-card rounded-3xl border border-border shadow-sm overflow-hidden">
+									<div className="p-8 border-b border-border bg-secondary/50">
+										<h2 className="text-xl font-black text-foreground">Daily Nutrition Targets</h2>
+										<p className="text-xs text-muted-foreground mt-1 font-medium">Set your daily macronutrient and calorie goals.</p>
 									</div>
 									<div className="p-8 space-y-8">
 										<div className="grid grid-cols-2 gap-6">
 											<div className="space-y-2">
-												<Label className="text-xs font-black text-[#A0AEC0] uppercase tracking-wider">Daily Calories (kcal)</Label>
+												<Label className="text-xs font-black text-sahani-tertiary uppercase tracking-wider">Daily Calories (kcal)</Label>
 												<Input 
 													type="number"
 													value={calories} 
 													onChange={(e) => setCalories(Number(e.target.value))}
-													className="h-12 border-[#E2E8F0] rounded-xl focus-visible:ring-[#13EC5B]/50 font-bold"
+													className="h-12 border-border rounded-xl focus-visible:ring-primary/50 font-bold"
 												/>
 											</div>
 											<div className="space-y-2">
-												<Label className="text-xs font-black text-[#A0AEC0] uppercase tracking-wider">Protein (g)</Label>
+												<Label className="text-xs font-black text-sahani-tertiary uppercase tracking-wider">Protein (g)</Label>
 												<Input 
 													type="number"
 													value={protein} 
 													onChange={(e) => setProtein(Number(e.target.value))}
-													className="h-12 border-[#E2E8F0] rounded-xl focus-visible:ring-[#13EC5B]/50 font-bold"
+													className="h-12 border-border rounded-xl focus-visible:ring-primary/50 font-bold"
 												/>
 											</div>
 											<div className="space-y-2">
-												<Label className="text-xs font-black text-[#A0AEC0] uppercase tracking-wider">Carbs (g)</Label>
+												<Label className="text-xs font-black text-sahani-tertiary uppercase tracking-wider">Carbs (g)</Label>
 												<Input 
 													type="number"
 													value={carbs} 
 													onChange={(e) => setCarbs(Number(e.target.value))}
-													className="h-12 border-[#E2E8F0] rounded-xl focus-visible:ring-[#13EC5B]/50 font-bold"
+													className="h-12 border-border rounded-xl focus-visible:ring-primary/50 font-bold"
 												/>
 											</div>
 											<div className="space-y-2">
-												<Label className="text-xs font-black text-[#A0AEC0] uppercase tracking-wider">Fat (g)</Label>
+												<Label className="text-xs font-black text-sahani-tertiary uppercase tracking-wider">Fat (g)</Label>
 												<Input 
 													type="number"
 													value={fat} 
 													onChange={(e) => setFat(Number(e.target.value))}
-													className="h-12 border-[#E2E8F0] rounded-xl focus-visible:ring-[#13EC5B]/50 font-bold"
+													className="h-12 border-border rounded-xl focus-visible:ring-primary/50 font-bold"
 												/>
 											</div>
 										</div>
@@ -254,7 +251,7 @@ function AccountPage() {
 										<div className="pt-4 flex justify-end">
 											<Button 
 												onClick={handleSaveNutrition}
-												className="bg-[#13EC5B] hover:bg-[#10B981] text-[#1A1A1A] font-black px-8 h-12 rounded-xl shadow-lg shadow-[#13EC5B]/20 transition-all"
+												className="bg-primary hover:bg-sahani-green-hover text-foreground font-black px-8 h-12 rounded-xl shadow-lg shadow-primary/20 transition-all"
 											>
 												Update Targets
 											</Button>
@@ -264,28 +261,28 @@ function AccountPage() {
 							)}
 
 							{activeTab === "dietary" && (
-								<div className="bg-white rounded-3xl border border-[#E2E8F0] shadow-sm overflow-hidden">
-									<div className="p-8 border-b border-[#E2E8F0] bg-[#F8F9FA]/50">
-										<h2 className="text-xl font-black text-[#1A1A1A]">Dietary Preferences</h2>
-										<p className="text-xs text-[#4A5568] mt-1 font-medium">Customise your sahani experience.</p>
+								<div className="bg-card rounded-3xl border border-border shadow-sm overflow-hidden">
+									<div className="p-8 border-b border-border bg-secondary/50">
+										<h2 className="text-xl font-black text-foreground">Dietary Preferences</h2>
+										<p className="text-xs text-muted-foreground mt-1 font-medium">Customise your sahani experience.</p>
 									</div>
 									<div className="p-8 space-y-8">
 										<div className="grid grid-cols-2 gap-8">
 											<div className="space-y-6">
-												<h3 className="text-sm font-black text-[#1A1A1A] uppercase tracking-wider">Primary Diet</h3>
+												<h3 className="text-sm font-black text-foreground uppercase tracking-wider">Primary Diet</h3>
 												<div className="space-y-3">
 													{["Vegan", "Vegetarian", "Pescatarian", "Keto", "Paleo", "No Preference"].map((diet) => (
-														<label key={diet} className="flex items-center justify-between p-4 bg-[#F8F9FA] rounded-2xl border border-[#E2E8F0] cursor-pointer hover:border-[#13EC5B] transition-all group">
-															<span className="font-bold text-[#1A1A1A]">{diet}</span>
-															<div className={`w-5 h-5 rounded-full border-2 ${diet === "No Preference" ? "border-[#13EC5B] bg-[#13EC5B]" : "border-[#E2E8F0] group-hover:border-[#13EC5B]"}`}>
-																{diet === "No Preference" && <div className="w-full h-full flex items-center justify-center"><div className="w-1.5 h-1.5 rounded-full bg-white" /></div>}
+														<label key={diet} className="flex items-center justify-between p-4 bg-secondary rounded-2xl border border-border cursor-pointer hover:border-primary transition-all group">
+															<span className="font-bold text-foreground">{diet}</span>
+															<div className={`w-5 h-5 rounded-full border-2 ${diet === "No Preference" ? "border-primary bg-primary" : "border-border group-hover:border-primary"}`}>
+																{diet === "No Preference" && <div className="w-full h-full flex items-center justify-center"><div className="w-1.5 h-1.5 rounded-full bg-card" /></div>}
 															</div>
 														</label>
 													))}
 												</div>
 											</div>
 											<div className="space-y-6">
-												<h3 className="text-sm font-black text-[#1A1A1A] uppercase tracking-wider">Health Goals</h3>
+												<h3 className="text-sm font-black text-foreground uppercase tracking-wider">Health Goals</h3>
 												<div className="space-y-4">
 													{[
 														{ label: "Weight Loss", desc: "Focus on calorie deficit meals" },
@@ -293,13 +290,13 @@ function AccountPage() {
 														{ label: "Maintenance", desc: "Balanced nutritional intake" },
 														{ label: "Heart Healthy", desc: "Low sodium and healthy fats" },
 													].map((goal) => (
-														<div key={goal.label} className="p-4 bg-white rounded-2xl border border-[#E2E8F0] flex items-start gap-4 hover:shadow-md transition-all cursor-pointer group">
-															<div className="w-10 h-10 rounded-xl bg-[#F8F9FA] flex items-center justify-center text-[#13EC5B] group-hover:bg-[#13EC5B] group-hover:text-white transition-all">
+														<div key={goal.label} className="p-4 bg-card rounded-2xl border border-border flex items-start gap-4 hover:shadow-md transition-all cursor-pointer group">
+															<div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
 																<Heart className="w-5 h-5" />
 															</div>
 															<div>
-																<p className="font-bold text-[#1A1A1A]">{goal.label}</p>
-																<p className="text-xs text-[#4A5568] font-medium">{goal.desc}</p>
+																<p className="font-bold text-foreground">{goal.label}</p>
+																<p className="text-xs text-muted-foreground font-medium">{goal.desc}</p>
 															</div>
 														</div>
 													))}
@@ -311,50 +308,50 @@ function AccountPage() {
 							)}
 
 							{activeTab === "security" && (
-								<div className="bg-white rounded-3xl border border-[#E2E8F0] shadow-sm overflow-hidden">
-									<div className="p-8 border-b border-[#E2E8F0] bg-[#F8F9FA]/50">
-										<h2 className="text-xl font-black text-[#1A1A1A]">Security Settings</h2>
-										<p className="text-xs text-[#4A5568] mt-1 font-medium">Keep your account safe and secure.</p>
+								<div className="bg-card rounded-3xl border border-border shadow-sm overflow-hidden">
+									<div className="p-8 border-b border-border bg-secondary/50">
+										<h2 className="text-xl font-black text-foreground">Security Settings</h2>
+										<p className="text-xs text-muted-foreground mt-1 font-medium">Keep your account safe and secure.</p>
 									</div>
 									<div className="p-8 space-y-6">
 										<div className="space-y-4">
-											<div className="flex items-center justify-between p-6 bg-[#F8F9FA] rounded-2xl border border-[#E2E8F0]">
+											<div className="flex items-center justify-between p-6 bg-secondary rounded-2xl border border-border">
 												<div className="flex items-center gap-4">
-													<div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#13EC5B] shadow-sm">
+													<div className="w-12 h-12 rounded-xl bg-card flex items-center justify-center text-primary shadow-sm">
 														<Key className="w-6 h-6" />
 													</div>
 													<div>
-														<p className="font-bold text-[#1A1A1A]">Password</p>
-														<p className="text-xs text-[#4A5568] font-medium">Last changed 3 months ago</p>
+														<p className="font-bold text-foreground">Password</p>
+														<p className="text-xs text-muted-foreground font-medium">Last changed 3 months ago</p>
 													</div>
 												</div>
-												<Button variant="outline" className="rounded-xl font-bold border-[#E2E8F0]">Update</Button>
+												<Button variant="outline" className="rounded-xl font-bold border-border">Update</Button>
 											</div>
 
-											<div className="flex items-center justify-between p-6 bg-[#F8F9FA] rounded-2xl border border-[#E2E8F0]">
+											<div className="flex items-center justify-between p-6 bg-secondary rounded-2xl border border-border">
 												<div className="flex items-center gap-4">
-													<div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#13EC5B] shadow-sm">
+													<div className="w-12 h-12 rounded-xl bg-card flex items-center justify-center text-primary shadow-sm">
 														<Shield className="w-6 h-6" />
 													</div>
 													<div>
-														<p className="font-bold text-[#1A1A1A]">Two-Factor Authentication</p>
-														<p className="text-xs text-[#4A5568] font-medium">Adds an extra layer of security to your account</p>
+														<p className="font-bold text-foreground">Two-Factor Authentication</p>
+														<p className="text-xs text-muted-foreground font-medium">Adds an extra layer of security to your account</p>
 													</div>
 												</div>
 												<Switch />
 											</div>
 
-											<div className="flex items-center justify-between p-6 bg-[#F8F9FA] rounded-2xl border border-[#E2E8F0]">
+											<div className="flex items-center justify-between p-6 bg-secondary rounded-2xl border border-border">
 												<div className="flex items-center gap-4">
-													<div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#13EC5B] shadow-sm">
+													<div className="w-12 h-12 rounded-xl bg-card flex items-center justify-center text-primary shadow-sm">
 														<Eye className="w-6 h-6" />
 													</div>
 													<div>
-														<p className="font-bold text-[#1A1A1A]">Login Activity</p>
-														<p className="text-xs text-[#4A5568] font-medium">View your recent login locations</p>
+														<p className="font-bold text-foreground">Login Activity</p>
+														<p className="text-xs text-muted-foreground font-medium">View your recent login locations</p>
 													</div>
 												</div>
-												<ChevronRight className="w-5 h-5 text-[#A0AEC0]" />
+												<ChevronRight className="w-5 h-5 text-sahani-tertiary" />
 											</div>
 										</div>
 									</div>
@@ -363,7 +360,6 @@ function AccountPage() {
 						</div>
 					</div>
 				</div>
-			</main>
-		</div>
+		</PageLayout>
 	);
 }

@@ -72,7 +72,7 @@ function SignupPage() {
 		"bg-red-500",
 		"bg-yellow-500",
 		"bg-blue-500",
-		"bg-[#13EC5B]",
+		"bg-primary",
 	];
 
 	const onSubmit = async (data: SignupFormData) => {
@@ -112,7 +112,7 @@ function SignupPage() {
 	};
 
 	return (
-		<div className="min-h-screen bg-[#F8F9FA] font-['Manrope',sans-serif]">
+		<div className="min-h-screen bg-secondary font-['Manrope',sans-serif]">
 			<link
 				href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
 				rel="stylesheet"
@@ -122,22 +122,22 @@ function SignupPage() {
 				rel="stylesheet"
 			/>
 
-			<header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-[#E2E8F0] bg-white/80 backdrop-blur-md px-10 py-3">
+			<header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-border bg-card/80 backdrop-blur-md px-10 py-3">
 				<Link to="/" className="flex items-center gap-2">
-					<div className="w-8 h-8 bg-[#13EC5B] rounded-lg flex items-center justify-center">
+					<div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
 						<span className="material-icons text-white text-lg">
 							restaurant_menu
 						</span>
 					</div>
-					<span className="font-bold text-lg text-[#1A1A1A]">sahani</span>
+					<span className="font-bold text-lg text-foreground">sahani</span>
 				</Link>
 				<div className="flex items-center gap-4">
-					<span className="text-sm text-[#4A5568]">
+					<span className="text-sm text-muted-foreground">
 						Already have an account?
 					</span>
 					<Link
 						to="/login"
-						className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#13EC5B]/10 text-[#1A1A1A] text-sm font-bold border border-[#13EC5B]/20 hover:bg-[#13EC5B]/30 transition-colors"
+						className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary/10 text-foreground text-sm font-bold border border-primary/20 hover:bg-primary/30 transition-colors"
 					>
 						Log In
 					</Link>
@@ -145,7 +145,7 @@ function SignupPage() {
 			</header>
 
 			<main className="flex h-screen pt-[64px]">
-				<div className="hidden lg:flex w-1/2 relative overflow-hidden bg-[#1A1A1A]">
+				<div className="hidden lg:flex w-1/2 relative overflow-hidden bg-foreground">
 					<div
 						className="absolute inset-0 opacity-60 bg-cover bg-center"
 						style={{
@@ -163,28 +163,28 @@ function SignupPage() {
 						</p>
 						<div className="mt-12 flex gap-4">
 							<div className="flex -space-x-3">
-								<div className="w-10 h-10 rounded-full border-2 border-[#1A1A1A] bg-gray-300 overflow-hidden">
+								<div className="w-10 h-10 rounded-full border-2 border-foreground bg-gray-300 overflow-hidden">
 									<img
 										src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
 										alt="User avatar"
 										className="w-full h-full object-cover"
 									/>
 								</div>
-								<div className="w-10 h-10 rounded-full border-2 border-[#1A1A1A] bg-gray-300 overflow-hidden">
+								<div className="w-10 h-10 rounded-full border-2 border-foreground bg-gray-300 overflow-hidden">
 									<img
 										src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
 										alt="User avatar"
 										className="w-full h-full object-cover"
 									/>
 								</div>
-								<div className="w-10 h-10 rounded-full border-2 border-[#1A1A1A] bg-gray-300 overflow-hidden">
+								<div className="w-10 h-10 rounded-full border-2 border-foreground bg-gray-300 overflow-hidden">
 									<img
 										src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
 										alt="User avatar"
 										className="w-full h-full object-cover"
 									/>
 								</div>
-								<div className="w-10 h-10 rounded-full border-2 border-[#1A1A1A] bg-[#13EC5B] flex items-center justify-center text-[#1A1A1A] text-xs font-bold">
+								<div className="w-10 h-10 rounded-full border-2 border-foreground bg-primary flex items-center justify-center text-foreground text-xs font-bold">
 									+2k
 								</div>
 							</div>
@@ -195,24 +195,24 @@ function SignupPage() {
 					</div>
 				</div>
 
-				<div className="w-full lg:w-1/2 flex flex-col items-center justify-start py-12 px-6 lg:px-20 overflow-y-auto bg-white">
+				<div className="w-full lg:w-1/2 flex flex-col items-center justify-start py-12 px-6 lg:px-20 overflow-y-auto bg-card">
 					<div className="w-full max-w-[480px]">
 						<div className="flex flex-col gap-3 mb-8">
 							<div className="flex gap-6 justify-between items-center">
-								<p className="text-[#1A1A1A] text-base font-bold leading-normal">
+								<p className="text-foreground text-base font-bold leading-normal">
 									Step 1: Account Details
 								</p>
-								<p className="text-[#1A1A1A] text-sm font-medium leading-normal">
+								<p className="text-foreground text-sm font-medium leading-normal">
 									1 / 2
 								</p>
 							</div>
-							<div className="rounded-full bg-[#E2E8F0] h-2 overflow-hidden">
+							<div className="rounded-full bg-border h-2 overflow-hidden">
 								<div
-									className="h-2 rounded-full bg-[#13EC5B]"
+									className="h-2 rounded-full bg-primary"
 									style={{ width: "50%" }}
 								/>
 							</div>
-							<p className="text-[#4A5568] text-sm font-medium leading-normal flex items-center gap-1">
+							<p className="text-muted-foreground text-sm font-medium leading-normal flex items-center gap-1">
 								Next:{" "}
 								<span className="font-normal opacity-80">
 									Dietary Preferences
@@ -221,10 +221,10 @@ function SignupPage() {
 						</div>
 
 						<div className="mb-8">
-							<h2 className="text-[#1A1A1A] tracking-tight text-3xl font-black leading-tight">
+							<h2 className="text-foreground tracking-tight text-3xl font-black leading-tight">
 								Create your account
 							</h2>
-							<p className="text-[#4A5568] mt-2">
+							<p className="text-muted-foreground mt-2">
 								Let's get you set up for your meal planning journey.
 							</p>
 						</div>
@@ -241,7 +241,7 @@ function SignupPage() {
 								variant="outline"
 								onClick={handleGoogleSignup}
 								disabled={isLoading}
-								className="h-12 border-[#E2E8F0] hover:bg-[#F8F9FA]"
+								className="h-12 border-border hover:bg-secondary"
 							>
 								<svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
 									<title>Google Logo</title>
@@ -268,7 +268,7 @@ function SignupPage() {
 								type="button"
 								variant="outline"
 								disabled={isLoading}
-								className="h-12 border-[#E2E8F0] hover:bg-[#F8F9FA]"
+								className="h-12 border-border hover:bg-secondary"
 							>
 								<svg
 									className="w-5 h-5 mr-2"
@@ -284,10 +284,10 @@ function SignupPage() {
 
 						<div className="relative mb-8">
 							<div className="absolute inset-0 flex items-center">
-								<div className="w-full border-t border-[#E2E8F0]" />
+								<div className="w-full border-t border-border" />
 							</div>
 							<div className="relative flex justify-center text-xs uppercase">
-								<span className="bg-white px-2 text-[#4A5568]">
+								<span className="bg-card px-2 text-muted-foreground">
 									Or continue with email
 								</span>
 							</div>
@@ -295,7 +295,7 @@ function SignupPage() {
 
 						<form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
 							<div className="space-y-2">
-								<Label htmlFor={nameId} className="text-[#1A1A1A]">
+								<Label htmlFor={nameId} className="text-foreground">
 									Full Name
 								</Label>
 								<Input
@@ -303,7 +303,7 @@ function SignupPage() {
 									placeholder="John Doe"
 									{...register("fullName")}
 									aria-invalid={errors.fullName ? "true" : "false"}
-									className="h-12 border-[#E2E8F0] focus-visible:ring-[#13EC5B]/50"
+									className="h-12 border-border focus-visible:ring-primary/50"
 								/>
 								{errors.fullName && (
 									<p className="text-sm text-red-600">
@@ -313,7 +313,7 @@ function SignupPage() {
 							</div>
 
 							<div className="space-y-2">
-								<Label htmlFor={emailId} className="text-[#1A1A1A]">
+								<Label htmlFor={emailId} className="text-foreground">
 									Email Address
 								</Label>
 								<Input
@@ -322,7 +322,7 @@ function SignupPage() {
 									placeholder="john@example.com"
 									{...register("email")}
 									aria-invalid={errors.email ? "true" : "false"}
-									className="h-12 border-[#E2E8F0] focus-visible:ring-[#13EC5B]/50"
+									className="h-12 border-border focus-visible:ring-primary/50"
 								/>
 								{errors.email && (
 									<p className="text-sm text-red-600">{errors.email.message}</p>
@@ -330,7 +330,7 @@ function SignupPage() {
 							</div>
 
 							<div className="space-y-2">
-								<Label htmlFor={passwordId} className="text-[#1A1A1A]">
+								<Label htmlFor={passwordId} className="text-foreground">
 									Password
 								</Label>
 								<div className="relative">
@@ -340,14 +340,14 @@ function SignupPage() {
 										placeholder="Create a password"
 										{...register("password")}
 										aria-invalid={errors.password ? "true" : "false"}
-										className="h-12 pr-12 border-[#E2E8F0] focus-visible:ring-[#13EC5B]/50"
+										className="h-12 pr-12 border-border focus-visible:ring-primary/50"
 									/>
 									<Button
 										type="button"
 										variant="ghost"
 										size="icon"
 										onClick={() => setShowPassword(!showPassword)}
-										className="absolute right-0 top-0 h-12 w-12 text-[#4A5568] hover:text-[#1A1A1A]"
+										className="absolute right-0 top-0 h-12 w-12 text-muted-foreground hover:text-foreground"
 									>
 										{showPassword ? (
 											<EyeOff className="h-5 w-5" />
@@ -371,18 +371,18 @@ function SignupPage() {
 													className={`h-1 flex-1 rounded ${
 														i < passwordStrength
 															? strengthColors[passwordStrength - 1]
-															: "bg-[#E2E8F0]"
+															: "bg-border"
 													}`}
 												/>
 											))}
 										</div>
-										<p className="text-[11px] text-[#4A5568]">
+										<p className="text-[11px] text-muted-foreground">
 											Password strength:{" "}
 											<span
 												className={`font-bold ${
 													passwordStrength > 0
-														? "text-[#13EC5B]"
-														: "text-[#4A5568]"
+														? "text-primary"
+														: "text-muted-foreground"
 												}`}
 											>
 												{passwordStrength > 0
@@ -401,11 +401,11 @@ function SignupPage() {
 									onCheckedChange={(checked) =>
 										setValue("newsletter", checked as boolean)
 									}
-									className="mt-0.5 border-[#E2E8F0] data-[state=checked]:bg-[#13EC5B] data-[state=checked]:border-[#13EC5B]"
+									className="mt-0.5 border-border data-[state=checked]:bg-primary data-[state=checked]:border-primary"
 								/>
 								<Label
 									htmlFor={newsletterId}
-									className="text-sm leading-tight text-[#1A1A1A] cursor-pointer"
+									className="text-sm leading-tight text-foreground cursor-pointer"
 								>
 									Send me weekly meal inspiration, nutritional tips, and
 									exclusive updates.
@@ -415,7 +415,7 @@ function SignupPage() {
 							<Button
 								type="submit"
 								disabled={isLoading || !isValid}
-								className="w-full h-14 bg-[#13EC5B] text-[#1A1A1A] font-black tracking-[0.015em] hover:bg-[#10B981] shadow-lg shadow-[#13EC5B]/20 disabled:opacity-50 transition-colors"
+								className="w-full h-14 bg-primary text-foreground font-black tracking-[0.015em] hover:bg-sahani-green-hover shadow-lg shadow-primary/20 disabled:opacity-50 transition-colors"
 							>
 								{isLoading ? (
 									<span className="flex items-center gap-2">
@@ -428,18 +428,18 @@ function SignupPage() {
 							</Button>
 						</form>
 
-						<p className="mt-8 text-center text-xs text-[#4A5568]">
+						<p className="mt-8 text-center text-xs text-muted-foreground">
 							By clicking "Continue", you agree to our{" "}
 							<Link
 								to="/"
-								className="underline font-bold text-[#1A1A1A] hover:text-[#13EC5B] transition-colors"
+								className="underline font-bold text-foreground hover:text-primary transition-colors"
 							>
 								Terms of Service
 							</Link>{" "}
 							and{" "}
 							<Link
 								to="/"
-								className="underline font-bold text-[#1A1A1A] hover:text-[#13EC5B] transition-colors"
+								className="underline font-bold text-foreground hover:text-primary transition-colors"
 							>
 								Privacy Policy
 							</Link>

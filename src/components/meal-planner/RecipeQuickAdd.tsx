@@ -17,9 +17,9 @@ export function RecipeQuickAdd({
 		<button
 			type="button"
 			onClick={() => onAdd(recipe._id)}
-			className="flex items-center gap-3 p-3 bg-[#F8F9FA] rounded-xl hover:bg-[#F1F5F9] border border-transparent hover:border-[#E2E8F0] transition-all cursor-pointer w-full text-left"
+			className="flex items-center gap-3 p-3 bg-secondary rounded-xl hover:bg-muted border border-transparent hover:border-border transition-all cursor-pointer w-full text-left"
 		>
-			<div className="w-12 h-12 rounded-lg bg-white border border-[#E2E8F0] flex items-center justify-center flex-shrink-0 overflow-hidden">
+			<div className="w-12 h-12 rounded-lg bg-card border border-border flex items-center justify-center flex-shrink-0 overflow-hidden">
 				{recipe.imageUrl ? (
 					<img
 						src={recipe.imageUrl}
@@ -27,17 +27,17 @@ export function RecipeQuickAdd({
 						className="w-full h-full object-cover"
 					/>
 				) : (
-					<ChefHat className="w-6 h-6 text-[#A0AEC0]" />
+					<ChefHat className="w-6 h-6 text-sahani-tertiary" />
 				)}
 			</div>
 			<div className="flex-1 min-w-0">
-				<h4 className="font-bold text-sm text-[#1A1A1A] truncate">{recipe.name}</h4>
+				<h4 className="font-bold text-sm text-foreground truncate">{recipe.name}</h4>
 				<div className="flex items-center gap-2 mt-1">
-					<span className="text-[10px] font-bold text-[#13EC5B] bg-[#13EC5B]/10 px-1.5 py-0.5 rounded">
+					<span className="text-[10px] font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded">
 						{recipe.calories} kcal
 					</span>
 					{totalTime > 0 && (
-						<span className="text-[10px] text-[#4A5568] font-medium flex items-center gap-1">
+						<span className="text-[10px] text-muted-foreground font-medium flex items-center gap-1">
 							<Clock className="w-3 h-3" />
 							{totalTime}m
 						</span>

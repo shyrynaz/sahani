@@ -1,4 +1,4 @@
-import { Sidebar } from "@/components/Sidebar";
+import { PageLayout } from "@/components/sahani/PageLayout";
 import { RecipeDetail } from "@/components/recipes/RecipeDetail";
 import { RecipeList } from "@/components/recipes/RecipeList";
 import { authClient } from "@/lib/auth-client";
@@ -24,25 +24,23 @@ function RecipesPage() {
 
   if (sessionPending) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#F8F9FA]">
-        <Loader2 className="w-8 h-8 text-[#13EC5B] animate-spin" />
+      <div className="flex min-h-screen items-center justify-center bg-secondary">
+        <Loader2 className="w-8 h-8 text-primary animate-spin" />
       </div>
     );
   }
 
   if (!session?.user) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#F8F9FA]">
+      <div className="flex min-h-screen items-center justify-center bg-secondary">
         <p>Please log in to view recipes.</p>
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-screen bg-[#F8F9FA]">
-      <Sidebar userName={session.user.name} activePath="/recipes" />
-
-      <main className="flex-1 ml-64 flex overflow-hidden h-screen">
+    <PageLayout userName={session.user.name} className="p-0">
+      <div className="flex overflow-hidden h-screen">
         {/* Column 2: Recipe List */}
         <RecipeList
           recipes={recipes}
@@ -51,13 +49,13 @@ function RecipesPage() {
         />
 
         {/* Column 3: Recipe Content */}
-        <div className="flex-1 overflow-y-auto bg-white flex">
+        <div className="flex-1 overflow-y-auto bg-card flex">
           <RecipeDetail
             key={selectedRecipe?._id}
             recipe={selectedRecipe ?? null}
           />
         </div>
-      </main>
-    </div>
+      </div>
+    </PageLayout>
   );
 }

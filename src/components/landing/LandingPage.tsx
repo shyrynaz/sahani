@@ -8,17 +8,17 @@ export function LandingPage() {
   const sectionid = useId();
 
   return (
-    <div className="min-h-screen bg-white">
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#E2E8F0]">
+    <div className="min-h-screen bg-card">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-card border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-[#13EC5B] rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <span className="material-icons text-white text-lg">
                   restaurant_menu
                 </span>
               </div>
-              <span className="font-bold text-lg text-[#1A1A1A]">sahani</span>
+              <span className="font-bold text-lg text-foreground">sahani</span>
             </Link>
 
             <div className="hidden md:flex items-center gap-8">
@@ -31,7 +31,7 @@ export function LandingPage() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-sm font-medium text-[#4A5568] hover:text-[#13EC5B] transition-colors"
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
                 >
                   {link.label}
                 </a>
@@ -41,12 +41,12 @@ export function LandingPage() {
             <div className="hidden md:flex items-center gap-4">
               <Link
                 to="/login"
-                className="text-sm font-medium text-[#4A5568] hover:text-[#13EC5B] transition-colors"
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
               >
                 Login
               </Link>
               <Link to="/signup">
-                <Button className="bg-[#13EC5B] hover:bg-[#10B981] text-white font-semibold rounded-lg px-5 py-2 text-sm">
+                <Button className="bg-primary hover:bg-sahani-green-hover text-white font-semibold rounded-lg px-5 py-2 text-sm">
                   Sign Up
                 </Button>
               </Link>
@@ -54,10 +54,10 @@ export function LandingPage() {
 
             <button
               type="button"
-              className="md:hidden p-2 rounded-lg hover:bg-[#F8F9FA]"
+              className="md:hidden p-2 rounded-lg hover:bg-secondary"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              <span className="material-icons text-[#4A5568]">
+              <span className="material-icons text-muted-foreground">
                 {mobileMenuOpen ? "close" : "menu"}
               </span>
             </button>
@@ -65,7 +65,7 @@ export function LandingPage() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-[#E2E8F0]">
+          <div className="md:hidden bg-card border-t border-border">
             <div className="px-4 py-4 space-y-3">
               {[
                 { label: "Features", href: "#features" },
@@ -76,21 +76,21 @@ export function LandingPage() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="block text-sm font-medium text-[#4A5568] hover:text-[#13EC5B] py-2"
+                  className="block text-sm font-medium text-muted-foreground hover:text-primary py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
                 </a>
               ))}
-              <div className="pt-3 border-t border-[#E2E8F0] space-y-3">
+              <div className="pt-3 border-t border-border space-y-3">
                 <Link
                   to="/login"
-                  className="block text-sm font-medium text-[#4A5568] hover:text-[#13EC5B] py-2"
+                  className="block text-sm font-medium text-muted-foreground hover:text-primary py-2"
                 >
                   Login
                 </Link>
                 <Link to="/signup" className="block">
-                  <Button className="w-full bg-[#13EC5B] hover:bg-[#10B981] text-white font-semibold rounded-lg">
+                  <Button className="w-full bg-primary hover:bg-sahani-green-hover text-white font-semibold rounded-lg">
                     Sign Up
                   </Button>
                 </Link>
@@ -100,31 +100,31 @@ export function LandingPage() {
         )}
       </nav>
 
-      <section className="pt-24 pb-16 lg:pt-28 lg:pb-20 px-4 sm:px-6 lg:px-8 bg-white">
+      <section className="pt-24 pb-16 lg:pt-28 lg:pb-20 px-4 sm:px-6 lg:px-8 bg-card">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
-              <p className="text-xs font-medium text-[#13EC5B] uppercase tracking-wider mb-4">
+              <p className="text-xs font-medium text-primary uppercase tracking-wider mb-4">
                 Welcome to the future of eating
               </p>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1A1A1A] leading-tight mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
                 Eat Better,
                 <br />
-                <span className="text-[#13EC5B]">Stress Less.</span>
+                <span className="text-primary">Stress Less.</span>
               </h1>
-              <p className="text-base text-[#4A5568] mb-8 max-w-md">
+              <p className="text-base text-muted-foreground mb-8 max-w-md">
                 Custom meal plans tailored to your lifestyle. Save 5+ hours on
                 grocery shopping and cooking every single week.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link to="/signup">
-                  <Button className="bg-[#13EC5B] hover:bg-[#10B981] text-white font-semibold rounded-lg px-6 py-3 text-sm">
+                  <Button className="bg-primary hover:bg-sahani-green-hover text-white font-semibold rounded-lg px-6 py-3 text-sm">
                     Start Planning Free
                   </Button>
                 </Link>
                 <Button
                   variant="outline"
-                  className="border-[#E2E8F0] text-[#1A1A1A] hover:bg-[#F8F9FA] rounded-lg px-6 py-3 text-sm"
+                  className="border-border text-foreground hover:bg-secondary rounded-lg px-6 py-3 text-sm"
                 >
                   <PlayCircle className="w-4 h-4 mr-2" />
                   See how it works
@@ -139,9 +139,9 @@ export function LandingPage() {
                     />
                   ))}
                 </div>
-                <p className="text-sm text-[#A0AEC0]">
+                <p className="text-sm text-sahani-tertiary">
                   Joined by{" "}
-                  <span className="text-[#1A1A1A] font-medium">10,000+</span>{" "}
+                  <span className="text-foreground font-medium">10,000+</span>{" "}
                   healthy eaters
                 </p>
               </div>
@@ -155,15 +155,15 @@ export function LandingPage() {
                   className="w-full h-auto object-cover"
                 />
               </div>
-              <div className="absolute -bottom-4 left-4 bg-white rounded-lg shadow-lg px-4 py-3 flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#F8F9FA] rounded-full flex items-center justify-center">
-                  <span className="material-icons text-[#13EC5B] text-lg">
+              <div className="absolute -bottom-4 left-4 bg-card rounded-lg shadow-lg px-4 py-3 flex items-center gap-3">
+                <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center">
+                  <span className="material-icons text-primary text-lg">
                     timer
                   </span>
                 </div>
                 <div>
-                  <p className="text-xs text-[#A0AEC0]">AVG COOK TIME</p>
-                  <p className="text-sm font-semibold text-[#1A1A1A]">
+                  <p className="text-xs text-sahani-tertiary">AVG COOK TIME</p>
+                  <p className="text-sm font-semibold text-foreground">
                     15-20 Mins
                   </p>
                 </div>
@@ -175,14 +175,14 @@ export function LandingPage() {
 
       <section
         id={sectionid}
-        className="py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white"
+        className="py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-card"
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1A1A1A] mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               The smarter way to eat
             </h2>
-            <p className="text-base text-[#4A5568]">
+            <p className="text-base text-muted-foreground">
               We handle the planning, so you can enjoy the cooking. Three simple
               steps to a healthier you.
             </p>
@@ -214,17 +214,17 @@ export function LandingPage() {
             ].map((step) => (
               <div
                 key={step.number}
-                className="bg-[#F8F9FA] rounded-xl p-6 text-left"
+                className="bg-secondary rounded-xl p-6 text-left"
               >
-                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center mb-4 shadow-sm">
-                  <span className="material-icons text-[#13EC5B] text-xl">
+                <div className="w-12 h-12 bg-card rounded-lg flex items-center justify-center mb-4 shadow-sm">
+                  <span className="material-icons text-primary text-xl">
                     {step.icon}
                   </span>
                 </div>
-                <h3 className="text-lg font-semibold text-[#1A1A1A] mb-2">
+                <h3 className="text-lg font-semibold text-foreground mb-2">
                   {step.number}. {step.title}
                 </h3>
-                <p className="text-sm text-[#4A5568] leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {step.description}
                 </p>
               </div>
@@ -233,50 +233,50 @@ export function LandingPage() {
         </div>
       </section>
 
-      <footer className="bg-white border-t border-[#E2E8F0] py-12">
+      <footer className="bg-card border-t border-border py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div className="col-span-2">
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-[#13EC5B] rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                   <span className="material-icons text-white text-lg">
                     restaurant_menu
                   </span>
                 </div>
-                <span className="font-bold text-lg text-[#1A1A1A]">sahani</span>
+                <span className="font-bold text-lg text-foreground">sahani</span>
               </div>
-              <p className="text-sm text-[#4A5568] max-w-xs leading-relaxed">
+              <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
                 Making healthy eating accessible, sustainable, and enjoyable for
                 everyone. Join our community and change your life today.
               </p>
             </div>
             <div>
-              <h4 className="font-semibold text-[#1A1A1A] mb-4 text-sm">
+              <h4 className="font-semibold text-foreground mb-4 text-sm">
                 Product
               </h4>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link
                     to="/meal-planner"
-                    className="text-[#4A5568] hover:text-[#13EC5B] transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     Meal Planner
                   </Link>
                 </li>
                 <li>
-                  <span className="text-[#4A5568] hover:text-[#13EC5B] transition-colors cursor-pointer">
+                  <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                     Grocery List
                   </span>
                 </li>
                 <li>
-                  <span className="text-[#4A5568] hover:text-[#13EC5B] transition-colors cursor-pointer">
+                  <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                     Recipe Index
                   </span>
                 </li>
                 <li>
                   <a
                     href="#pricing"
-                    className="text-[#4A5568] hover:text-[#13EC5B] transition-colors"
+                    className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     Pro Pricing
                   </a>
@@ -284,27 +284,27 @@ export function LandingPage() {
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold text-[#1A1A1A] mb-4 text-sm">
+              <h4 className="font-semibold text-foreground mb-4 text-sm">
                 Company
               </h4>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <span className="text-[#4A5568] hover:text-[#13EC5B] transition-colors cursor-pointer">
+                  <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                     About Us
                   </span>
                 </li>
                 <li>
-                  <span className="text-[#4A5568] hover:text-[#13EC5B] transition-colors cursor-pointer">
+                  <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                     Careers
                   </span>
                 </li>
                 <li>
-                  <span className="text-[#4A5568] hover:text-[#13EC5B] transition-colors cursor-pointer">
+                  <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                     Privacy Policy
                   </span>
                 </li>
                 <li>
-                  <span className="text-[#4A5568] hover:text-[#13EC5B] transition-colors cursor-pointer">
+                  <span className="text-muted-foreground hover:text-primary transition-colors cursor-pointer">
                     Terms of Service
                   </span>
                 </li>
@@ -312,8 +312,8 @@ export function LandingPage() {
             </div>
           </div>
 
-          <div className="border-t border-[#E2E8F0] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-[#A0AEC0]">
+          <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-xs text-sahani-tertiary">
               © 2026 sahani Inc. All rights reserved.
             </p>
           </div>

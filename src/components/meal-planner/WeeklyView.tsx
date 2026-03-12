@@ -60,7 +60,7 @@ export function WeeklyView({
 							>
 								<ChefHat className={`w-6 h-6 ${color.text}`} />
 							</div>
-							<p className="text-[10px] font-black text-[#A0AEC0] uppercase tracking-wider">
+							<p className="text-[10px] font-black text-sahani-tertiary uppercase tracking-wider">
 								{mealType}
 							</p>
 						</div>
